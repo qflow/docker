@@ -1,7 +1,7 @@
 FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 MAINTAINER Michal Fojtak <mfojtak@seznam.cz>
-ENV http_proxy http://proxy.gtm.lilly.com:9000
-ENV https_proxy http://proxy.gtm.lilly.com:9000
+#ENV http_proxy http://proxy.gtm.lilly.com:9000
+#ENV https_proxy http://proxy.gtm.lilly.com:9000
 RUN apt-get update
 RUN apt-get install -y build-essential cmake git
 RUN apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
