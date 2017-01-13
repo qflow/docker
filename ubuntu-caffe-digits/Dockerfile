@@ -7,5 +7,5 @@ RUN apt-get install -y --no-install-recommends graphviz python-dev python-flask 
 
 WORKDIR /workspace
 RUN git clone https://github.com/NVIDIA/DIGITS.git
-RUN pip install -r digits/requirements.txt
+RUN pip install -r DIGITS/requirements.txt
 
