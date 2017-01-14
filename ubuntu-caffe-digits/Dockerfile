@@ -13,3 +13,8 @@ RUN pip install --upgrade setuptools
 RUN pip install -r $CAFFE_ROOT/python/requirements.txt
 RUN pip install -r $DIGITS_ROOT/requirements.txt
 
+VOLUME /data
+VOLUME /jobs
+WORKDIR $DIGITS_ROOT
+EXPOSE 5000
+ENTRYPOINT ["./digits-devserver"]
