@@ -7,5 +7,14 @@ RUN apt-get install -y --no-install-recommends graphviz python-dev python-flask 
 
 WORKDIR /workspace
 RUN git clone https://github.com/NVIDIA/DIGITS.git
-RUN pip install -r digits/requirements.txt
+ENV DIGITS_ROOT=/workspace/DIGITS
+RUN pip install --upgrade pip
+RUN pip install --upgrade setuptools
+RUN pip install -r $CAFFE_ROOT/python/requirements.txt
+RUN pip install -r $DIGITS_ROOT/requirements.txt
 
+VOLUME /data
+VOLUME /jobs
+WORKDIR $DIGITS_ROOT
+EXPOSE 5000
+ENTRYPOINT ["./digits-devserver"]
