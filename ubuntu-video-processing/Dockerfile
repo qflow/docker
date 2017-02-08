@@ -6,7 +6,7 @@ RUN apt-get update
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository -y ppa:jonathonf/ffmpeg-3
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends ffmpeg libavfilter-dev libav-tools x264 x265
+RUN apt-get install -y --no-install-recommends ffmpeg libavfilter-dev libavdevice-dev libavcodec-dev libav-tools x264 x265
 
 WORKDIR /workspace
 RUN git clone https://github.com/qflow/video.git
