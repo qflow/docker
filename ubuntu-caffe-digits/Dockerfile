@@ -9,6 +9,7 @@ WORKDIR /workspace
 RUN git clone https://github.com/NVIDIA/DIGITS.git
 ENV DIGITS_ROOT=/workspace/DIGITS
 RUN pip install --upgrade pip
+RUN pip install --upgrade pyparsing
 RUN pip install --upgrade setuptools
 RUN pip install -r $CAFFE_ROOT/python/requirements.txt
 RUN pip install -r $DIGITS_ROOT/requirements.txt
