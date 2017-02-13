@@ -1,4 +1,4 @@
-FROM qflow/ubuntu-caffe-digits:latest
+FROM qflow/ubuntu-caffe:latest
 MAINTAINER Michal Fojtak <mfojtak@seznam.cz>
 #ENV http_proxy http://proxy.gtm.lilly.com:9000
 #ENV https_proxy http://proxy.gtm.lilly.com:9000
