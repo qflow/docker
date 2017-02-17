@@ -4,7 +4,7 @@ MAINTAINER Michal Fojtak <mfojtak@seznam.cz>
 #ENV https_proxy http://proxy.gtm.lilly.com:9000
 WORKDIR /workspace
 RUN apt update && apt install -y build-essential cmake git autoconf automake libtool curl make g++ unzip && \
-    apt install -y libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler && \
+    apt install -y libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev libssl-dev && \
     apt install -y libgflags-dev libgoogle-glog-dev liblmdb-dev python-numpy && \
     apt install -y --no-install-recommends libboost-all-dev libatlas-base-dev && \
     git clone https://github.com/google/protobuf.git
