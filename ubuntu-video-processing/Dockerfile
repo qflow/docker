@@ -8,7 +8,7 @@ RUN apt update && apt install -y software-properties-common && add-apt-repositor
     mkdir /tools && git clone https://github.com/qflow/video.git && mkdir video/build
 ENV PATH=$PATH:/tools
 WORKDIR /workspace/video/build
-#RUN cmake -DCMAKE_INSTALL_PREFIX=/tools .. && make -j"$(nproc)" install
+RUN cmake -DCMAKE_INSTALL_PREFIX=/tools .. && make -j"$(nproc)" install
 
 WORKDIR /workspace
 
