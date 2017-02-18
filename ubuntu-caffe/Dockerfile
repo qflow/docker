@@ -2,22 +2,25 @@ FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 MAINTAINER Michal Fojtak <mfojtak@seznam.cz>
 #ENV http_proxy http://proxy.gtm.lilly.com:9000
 #ENV https_proxy http://proxy.gtm.lilly.com:9000
+RUN apt-get update
+RUN apt-get install -y build-essential cmake git autoconf automake libtool curl make g++ unzip
+RUN apt-get install -y libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+RUN apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev python-numpy
+RUN apt-get install -y --no-install-recommends libboost-all-dev
+RUN apt-get install -y libatlas-base-dev
 WORKDIR /workspace
-RUN apt update && apt install -y build-essential protobuf-compiler cmake git autoconf automake libtool curl make g++ unzip && \
-    apt install -y libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev libssl-dev && \
-    apt install -y libgflags-dev libgoogle-glog-dev liblmdb-dev python-numpy && \
-    apt install -y --no-install-recommends libboost-all-dev libatlas-base-dev && \
-    git clone https://github.com/google/protobuf.git
-
+RUN git clone https://github.com/google/protobuf.git
 WORKDIR /workspace/protobuf
 RUN ./autogen.sh && ./configure && make install && ldconfig
 WORKDIR /workspace
-RUN rm -r protobuf && git clone https://github.com/BVLC/caffe.git && mkdir caffe/build
+RUN rm -r protobuf
+RUN git clone https://github.com/BVLC/caffe.git
+RUN mkdir caffe/build
 WORKDIR /workspace/caffe/build
-RUN cmake -DUSE_CUDNN=1 .. && make -j"$(nproc)"
+RUN cmake -DUSE_CUDNN=1 ..
+RUN make -j"$(nproc)"
 ENV CAFFE_ROOT=/workspace/caffe
 ENV PATH $CAFFE_ROOT/build/tools:$PATH
 RUN echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
 WORKDIR /workspace
-
