@@ -12,7 +12,7 @@ RUN apt update && apt install -y build-essential cmake git autoconf automake lib
 WORKDIR /workspace/protobuf
 RUN ./autogen.sh && ./configure && make install && ldconfig
 WORKDIR /workspace
-RUN rm -r protobuf && git clone https://github.com/BVLC/caffe.git && mkdir caffe/build
+RUN rm -r protobuf && git clone --branch rc4 https://github.com/BVLC/caffe.git && mkdir caffe/build
 WORKDIR /workspace/caffe/build
 RUN cmake -DUSE_CUDNN=1 .. && make -j"$(nproc)"
 ENV CAFFE_ROOT=/workspace/caffe
