@@ -1,7 +1,5 @@
 FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 MAINTAINER Michal Fojtak <mfojtak@seznam.cz>
-#ENV http_proxy http://proxy.gtm.lilly.com:9000
-#ENV https_proxy http://proxy.gtm.lilly.com:9000
 WORKDIR /workspace
 RUN apt update && apt install -y build-essential cmake git autoconf automake libtool curl make g++ unzip && \
     apt install -y libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev libssl-dev && \
