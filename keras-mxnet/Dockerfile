@@ -29,7 +29,7 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     rm ~/anaconda.sh
 ENV PATH /opt/conda/bin:$PATH
 
-RUN pip install  mxnet-cu80 keras-mxnet
+RUN pip install  mxnet-cu90 keras-mxnet
 RUN conda install --yes numba bokeh libgcc wget && \
     conda install --yes -c conda-forge pika av && \
     conda install --yes -c anaconda tornado && \
